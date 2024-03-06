@@ -1,12 +1,16 @@
 import React from "react"
-import { Header } from "./Components/Exports"
+import {
+    Header,
+    LocationList,
+} from "./Components/Exports"
 
 function App() {
-  return (
-    <>
-     <Header/>
-    </>
-  )
+    return (
+        <>
+            <Header />
+            <LocationList />
+        </>
+    )
 }
 
 export default App

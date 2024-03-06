@@ -1,19 +1,34 @@
 import { useState } from "react"
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { DateRange } from 'react-date-range';
+import { format } from "date-fns";
 import {
     Location,
     Calender,
     Search,
 } from "../../Svg/Exports"
-import { OptionItems } from "../Exports"
+import {
+    OptionItems,
+} from "../Exports"
+
 
 function Header() {
     const [destination, setDestination] = useState("")
     const [isOpen, setIsOpen] = useState(false)
+    const [openDate, setOpenDate] = useState(false)
     const [options, setOptions] = useState({
         adult: 1,
         children: 0,
         room: 1,
     })
+    const [data, setData] = useState([
+        {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: 'selection',
+        }
+    ])
     const handlerOptions = (name, operation) => {
         setOptions((prev) => {
             return {
@@ -23,6 +38,7 @@ function Header() {
         }
         )
     }
+
 
     return (
         <>
@@ -39,13 +55,21 @@ function Header() {
                         />
                     </div>
                     <div class="h-10 bg-gray-300 p-px" />
-                    <div class="flex">
+                    <div
+                        class="flex"
+                        className="date"
+                        onClick={() => setOpenDate(!openDate)}
+                    >
                         <Calender class="w-5 aspect-square fill-blue-700" />
-                        <div>2023/10/10</div>
+                        <div>
+                            {`${format(data[0].startDate, "dd/MM/yyyy")} to ${format(data[0].endDate, "dd/MM/yyyy")}`}
+                        </div>
+
                     </div>
                     <div class="h-10 bg-gray-300 p-px" />
                     <div class="flex-none w-fit cursor-pointer">
-                        <div 
+                        <div
+                            className="dropDown"
                             onClick={() => setIsOpen(!isOpen)}
                         >
                             {options.adult} adult . {options.children} children . {options.room} room
@@ -62,8 +86,19 @@ function Header() {
                     handlerOptions={handlerOptions}
                     isOpen={isOpen}
                     options={options}
+                    setIsOpen={setIsOpen}
                 />
+
             </div>
+            {openDate &&
+                <DateRange
+                    ranges={data}
+                    onChange={(item) => setData([item.selection])}
+                    className="absolute sm:end-[10%] md:end-[20%] lg:end-[30%] xl:end-[40%]"
+                    minDate={new Date()}
+                    moveRangeOnFirstSelection={true}
+                />
+            }
         </>
     )
 }
