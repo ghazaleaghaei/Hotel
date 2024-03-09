@@ -12,6 +12,7 @@ function useFetchData(url, query) {
                 setIsLoading(true)
                 const { data } = await axios.get(`${url}?${query}`, { signal: controller.signal })
                 setData(data)
+                setIsLoading(false)
             }
             catch (err) {
                 if (axios.isCancel) {
@@ -19,12 +20,13 @@ function useFetchData(url, query) {
                 } else {
                     setData([])
                     setError(err.response.data.error)
+                    setIsLoading(false)
                 }
 
             }
-            finally {
-                setIsLoading(false)
-            }
+            // finally {
+            //     setIsLoading(false)
+            // }
         }
         fetchData()
         return () => {

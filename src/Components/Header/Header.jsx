@@ -11,11 +11,16 @@ import {
 import {
     OptionItems,
 } from "../Exports"
-import { createSearchParams, useNavigate } from "react-router-dom";
+import {
+    createSearchParams,
+    useNavigate,
+    useSearchParams
+} from "react-router-dom";
 
 
 function Header() {
-    const [destination, setDestination] = useState("")
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [destination, setDestination] = useState(searchParams.get("destination") || "")
     const [isOpen, setIsOpen] = useState(false)
     const [openDate, setOpenDate] = useState(false)
     const navigate = useNavigate()
