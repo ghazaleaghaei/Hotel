@@ -12,7 +12,7 @@ function OptionItems({
     useOutsideClick(optionRef, "dropDown", () => setIsOpen(false))
     return (<>
         <div
-            class={`absolute h-fit w-1/2 sm:w-1/4 rounded-lg shadow-md end-16 md:end-36 xl:end-60 bg-white duration-300 ${isOpen ? "top-10" : "-top-40"}`}
+            class={`absolute h-fit w-1/2 sm:w-1/4 rounded-lg shadow-md end-16 md:end-36 xl:end-60 bg-white duration-300 z-[1001] ${isOpen ? "top-10" : "-top-40"}`}
             ref={optionRef}
         >
             <OptionItem

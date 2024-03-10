@@ -5,7 +5,7 @@ import { Loading } from "../Exports"
 import { useHotels } from "../Context/HotelsProvider"
 
 function Hotels() {
-    const { isLoading, data } = useHotels()
+    const { isLoading, data, hotel } = useHotels()
     return (
         <>
             {isLoading ? <Loading /> :
@@ -15,7 +15,7 @@ function Hotels() {
                         <Link
                             key={item.id}
                             to={`/hotels/${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
-                            class="flex items-start gap-4 my-5 hover:scale-95 duration-500 group"
+                            class={`flex items-start gap-4 my-5 hover:scale-95 duration-500 group rounded-lg ${item.id === hotel.id && "bg-sky-50"}`}
                         >
                             <img
                                 src={item.picture_url.url}

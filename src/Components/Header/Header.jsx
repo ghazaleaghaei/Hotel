@@ -114,7 +114,7 @@ function Header() {
                 <DateRange
                     ranges={date}
                     onChange={(item) => setDate([item.selection])}
-                    className="absolute sm:end-[10%] md:end-[20%] lg:end-[30%] xl:end-[40%]"
+                    className="absolute mx-3 sm:end-[10%] md:end-[20%] lg:end-[36%] z-[1001]"
                     minDate={new Date()}
                     moveRangeOnFirstSelection={true}
                 />

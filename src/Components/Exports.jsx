@@ -8,6 +8,7 @@ import Loading from "./Loader/Loading"
 import Error from "./Error/Error"
 import Hotels from "./Hotels/Hotels"
 import Map from "./Map/Map"
+import Hotel from "./Hotel/Hotel"
 
 export { Header }
 export { OptionItem }
@@ -19,3 +20,4 @@ export { Loading }
 export { Error }
 export { Hotels }
 export { Map }
+export { Hotel }

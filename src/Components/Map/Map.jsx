@@ -11,6 +11,7 @@ import {
 } from "react-leaflet"
 import { useHotels } from "../Context/HotelsProvider"
 import { useSearchParams } from "react-router-dom"
+import { useGeoLocation } from "../../Hooks/Exports"
 
 function Map() {
     const { isLoading, data } = useHotels()
@@ -18,16 +19,34 @@ function Map() {
     const [searchParams, setSearchParams] = useSearchParams()
     const lat = searchParams.get("lat")
     const lng = searchParams.get("lng")
+    const {
+        isLoading: isLoadingPosition,
+        position: locationPosition,
+        getPosition
+    } = useGeoLocation()
     useEffect(() => {
         if (lat && lng) setCenter([lat, lng])
     }, [lat, lng])
+    useEffect(
+        () => {
+            if (locationPosition?.lat && locationPosition?.lng) {
+                setCenter([locationPosition.lat, locationPosition.lng])
+            }
+        }, [locationPosition]
+    )
     return (
         <MapContainer
             center={center}
             zoom={13}
             scrollWheelZoom={true}
-            style={{ height: 536 }}
+            style={{ height: 536, borderRadius: 10 }}
         >
+            <button
+                onClick={getPosition}
+                class="bg-indigo-600 shadow-lg shadow-indigo-700/50 font-bold text-white absolute bottom-0 z-[1000] m-5 rounded-lg px-2 py-1 hover:scale-105 duration-300"
+            >
+                {isLoadingPosition ? "Loading..." : "use you location"}
+            </button>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
