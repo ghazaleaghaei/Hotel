@@ -8,7 +8,6 @@ function Hotel() {
     const {getHotel, hotel:currentHotel, hotelLoading, hotelError} = useHotels()
     useEffect(() => {
         getHotel(id)
-        console.log(hotelError)
     }, [id])
     return (
         <div>

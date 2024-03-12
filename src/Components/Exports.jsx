@@ -9,6 +9,9 @@ import Error from "./Error/Error"
 import Hotels from "./Hotels/Hotels"
 import Map from "./Map/Map"
 import Hotel from "./Hotel/Hotel"
+import BookMarkLayout from "./BookMarkLayout/BookMarkLayout"
+import BookMarkList from "./BookMarkList/BookMarkList"
+import CurrentBookMark from "./CurrentBookMark/currentBookMark"
 
 export { Header }
 export { OptionItem }
@@ -21,3 +24,6 @@ export { Error }
 export { Hotels }
 export { Map }
 export { Hotel }
+export { BookMarkLayout }
+export { BookMarkList }
+export { CurrentBookMark }
