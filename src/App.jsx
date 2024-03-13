@@ -1,5 +1,9 @@
 import React from "react"
 import {
+    Route,
+    Routes,
+} from "react-router-dom"
+import {
     Header,
     HotelLayout,
     LocationList,
@@ -8,8 +12,8 @@ import {
     BookMarkLayout,
     BookMarkList,
     CurrentBookMark,
+    AddNewBookMark,
 } from "./Components/Exports"
-import { Route, Routes } from "react-router-dom"
 import HotelsProvider from "./Components/Context/HotelsProvider"
 import BookMarkProvider from "./Components/Context/BookMarkProvider"
 
@@ -28,7 +32,7 @@ function App() {
                         <Route path="/bookmarks" element={<BookMarkLayout />}>
                             <Route index element={<BookMarkList />} />
                             <Route path=":id" element={<CurrentBookMark />} />
-                            <Route path="add" element={<div>add new bookmark</div>} />
+                            <Route path="add" element={<AddNewBookMark />} />
                         </Route>
                     </Routes>
                 </HotelsProvider>

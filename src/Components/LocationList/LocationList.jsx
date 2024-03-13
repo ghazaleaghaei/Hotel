@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom"
 import { useFetchData } from "../../Hooks/Exports"
 import { Loading } from "../Exports"
 
 function LocationList() {
     const { data, isLoading, error } = useFetchData("http://localhost:5000/hotels", "")
-   
+
     return (
         <>
             <section class="mx-5 md:max-w-7xl 2xl:mx-auto">
@@ -11,8 +12,9 @@ function LocationList() {
                 {isLoading ? <Loading /> :
                     <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 my-5">
                         {data.map((item, index) =>
-                            <div
-                                class="shadow-md"
+                            <Link
+                                to={`/hotels/${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
+                                class="shadow-md hover:scale-105 duration-300"
                                 key={item.id}
                             >
                                 <img
@@ -27,7 +29,7 @@ function LocationList() {
                                     $&nbsp;{item.price}&nbsp;
                                     <span class="text-gray-500 font-light">night</span>
                                 </p>
-                            </div>
+                            </Link>
                         )}
                     </div>
                 }

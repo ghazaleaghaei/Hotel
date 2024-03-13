@@ -12,6 +12,7 @@ import Hotel from "./Hotel/Hotel"
 import BookMarkLayout from "./BookMarkLayout/BookMarkLayout"
 import BookMarkList from "./BookMarkList/BookMarkList"
 import CurrentBookMark from "./CurrentBookMark/currentBookMark"
+import AddNewBookMark from "./AddNewBookMark/AddNewBookMark"
 
 export { Header }
 export { OptionItem }
@@ -27,3 +28,4 @@ export { Hotel }
 export { BookMarkLayout }
 export { BookMarkList }
 export { CurrentBookMark }
+export { AddNewBookMark }
