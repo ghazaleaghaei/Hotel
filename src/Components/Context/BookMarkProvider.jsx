@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { useFetchData } from "../../Hooks/Exports"
 import axios from "axios"
 
@@ -6,33 +6,59 @@ const BookMarkContext = createContext()
 
 function BookMarkProvider({ children }) {
     const [currentBookMark, setCurrentBookMark] = useState(null)
-    const [currentBookMarkLoading, setCurrentBookMarkLoading] = useState(false)
-    const [currentBookMarkError, setCurrentBookMarkError] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
+    const [bookmarks, setBookMarks] = useState([])
 
-    const { isLoading, error, data: bookmarks } = useFetchData("http://localhost:5000/bookmarks")
+    useEffect(() => {
+        async function fetchBookMarkList() {
+            setLoading(true)
+            try {
+                const { data } = await axios.get("http://localhost:5000/bookmarks")
+                setBookMarks(data)
+            } catch (err) {
+
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchBookMarkList()
+    }, [])
 
     async function getCurrentBookMark(id) {
-        setCurrentBookMarkLoading(true)
+        setLoading(true)
         try {
             const { data } = await axios.get(`http://localhost:5000/bookmarks/${id}`)
             setCurrentBookMark(data)
-            setCurrentBookMarkLoading(false)
-        } catch (error) {
-            setCurrentBookMarkError(error.message)
-            setCurrentBookMarkLoading(false)
+            setLoading(false)
+        } catch (err) {
+            setError(error.message)
+            setLoading(false)
+        }
+    }
+
+    async function createBookMark(newBookMark) {
+        setLoading(true)
+        try {
+            const { data } = await axios.post("http://localhost:5000/bookmarks", newBookMark)
+            setBookMarks((prev) => [...prev, data])
+
+        } catch (err) {
+
+        } finally {
+            setLoading(false)
         }
     }
 
     return (
         <BookMarkContext.Provider
             value={{
-                isLoading,
                 bookmarks,
                 error,
                 currentBookMark,
-                currentBookMarkError,
-                currentBookMarkLoading,
-                getCurrentBookMark
+                loading,
+                getCurrentBookMark,
+                createBookMark,
             }}
         >
             {children}

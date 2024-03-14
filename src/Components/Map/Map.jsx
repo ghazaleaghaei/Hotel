@@ -24,7 +24,6 @@ function Map({ marker }) {
     } = useGeoLocation()
 
     useEffect(() => {
-        console.log(lat, lng)
         if (lat && lng) setCenter([lat, lng])
     }, [lat, lng])
 

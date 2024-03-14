@@ -8,8 +8,8 @@ function useFetchData(url, query) {
     useEffect(() => {
         const controller = new AbortController();
         async function fetchData() {
+            setIsLoading(true)
             try {
-                setIsLoading(true)
                 const { data } = await axios.get(`${url}?${query}`, { signal: controller.signal })
                 setData(data)
                 setIsLoading(false)
@@ -23,7 +23,7 @@ function useFetchData(url, query) {
                     setIsLoading(false)
                 }
 
-            }
+            } 
             // finally {
             //     setIsLoading(false)
             // }
