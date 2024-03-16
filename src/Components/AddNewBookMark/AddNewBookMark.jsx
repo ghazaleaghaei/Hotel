@@ -43,7 +43,7 @@ function AddNewBookMark() {
         fetchLocationData()
     }, [lat, lng])
 
-    const handelSubmit = (e) => {
+    const handelSubmit = async (e) => {
         e.preventDefault()
         if (!city || !country) return
         const newBookMark = {
@@ -54,7 +54,7 @@ function AddNewBookMark() {
             longitude: lng,
             host_location: city + "" + country,
         }
-        createBookMark(newBookMark)
+        await createBookMark(newBookMark)
         navigate("/bookmarks")
     }
 

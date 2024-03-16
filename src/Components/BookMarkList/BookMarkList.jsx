@@ -2,9 +2,16 @@ import { Link } from "react-router-dom"
 import { useBookMark } from "../Context/BookMarkProvider"
 import { Loading } from "../Exports"
 import ReactCountryFlag from "react-country-flag"
+import { Trash } from "../../Svg/Exports"
 
 function BookMarkList() {
-    const { bookmarks, loading, currentBookMark } = useBookMark()
+    const { bookmarks, loading, currentBookMark, deleteBookMark } = useBookMark()
+    const clickHandler = async (e, id) => {
+        e.preventDefault()
+        await deleteBookMark(id)
+        
+
+    }
     if (loading) return <Loading />
     return (
         <>
@@ -29,6 +36,11 @@ function BookMarkList() {
                             <strong>{item.cityName}</strong>&nbsp;
                             <span>{item.country}</span>
                         </div>
+                        <button
+                            onClick={(e) => { clickHandler(e, item.id) }}
+                            class="ms-auto">
+                            <Trash class="w-5 aspect-square fill-red-700" />
+                        </button>
                     </Link>
                 )}
             </div>
