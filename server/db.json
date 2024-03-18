@@ -1325,13 +1325,40 @@
   ],
   "bookmarks": [
     {
-      "cityName": "Daneborg",
-      "country": "Greenland",
-      "countryCode": "GL",
-      "latitude": "75.27541260821627",
-      "longitude": "-36.91406250000001",
-      "host_location": "DaneborgGreenland",
-      "id": 9
+      "cityName": "Silkeborg",
+      "country": "Denmark",
+      "countryCode": "DK",
+      "latitude": "56.145549500679074",
+      "longitude": "9.618543949364613",
+      "host_location": "SilkeborgDenmark",
+      "id": 2
+    },
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "countryCode": "DE",
+      "latitude": "52.48947038534306",
+      "longitude": "13.411562337914924",
+      "host_location": "BerlinGermany",
+      "id": 3
+    },
+    {
+      "cityName": "Tura",
+      "country": "Russian Federation (the)",
+      "countryCode": "RU",
+      "latitude": "64.65211223878967",
+      "longitude": "97.73309858013485",
+      "host_location": "TuraRussian Federation (the)",
+      "id": 5
+    },
+    {
+      "cityName": "Silkeborg",
+      "country": "Denmark",
+      "countryCode": "DK",
+      "latitude": "56.16304580548437",
+      "longitude": "9.630513519667009",
+      "host_location": "SilkeborgDenmark",
+      "id": 6
     }
   ]
 }

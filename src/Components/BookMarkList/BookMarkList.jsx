@@ -9,10 +9,11 @@ function BookMarkList() {
     const clickHandler = async (e, id) => {
         e.preventDefault()
         await deleteBookMark(id)
-        
+
 
     }
     if (loading) return <Loading />
+    if (!bookmarks.length) return <p>there is no bookmarked location</p>
     return (
         <>
             <div>
