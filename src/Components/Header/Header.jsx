@@ -9,9 +9,12 @@ import {
     Search,
 } from "../../Svg/Exports"
 import {
+    BookMarkList,
+    Login,
     OptionItems,
 } from "../Exports"
 import {
+    Link,
     createSearchParams,
     useNavigate,
     useSearchParams
@@ -62,6 +65,9 @@ function Header() {
         <>
             <section class="border rounded-lg w-[95%] max-w-7xl mx-auto my-5 px-2 py-3 shadow-md relative">
                 <div class="flex flex-nowrap w-full overflow-x-auto gap-2 lg:gap-10 items-center lg:justify-center">
+                    <Link to="/bookmarks">
+                        bookmarks
+                    </Link>
                     <div class="flex">
                         <Location class="w-5 aspect-square fill-red-700" />
                         <input
@@ -101,6 +107,9 @@ function Header() {
                             <Search class="w-5 aspect-square fill-white" />
                         </button>
                     </div>
+                    <Link to="/login">
+                        login
+                    </Link>
                 </div>
                 <OptionItems
                     handlerOptions={handlerOptions}

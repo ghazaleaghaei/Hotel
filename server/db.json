@@ -1359,6 +1359,24 @@
       "longitude": "9.630513519667009",
       "host_location": "SilkeborgDenmark",
       "id": 6
+    },
+    {
+      "cityName": "Kansas City",
+      "country": "United States of America (the)",
+      "countryCode": "US",
+      "latitude": "39.11621020143469",
+      "longitude": "-94.50055729403041",
+      "host_location": "Kansas CityUnited States of America (the)",
+      "id": 7
+    },
+    {
+      "cityName": "Craswall",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "countryCode": "GB",
+      "latitude": "52.01278178567428",
+      "longitude": "-3.0190673289951935",
+      "host_location": "CraswallUnited Kingdom of Great Britain and Northern Ireland (the)",
+      "id": 8
     }
   ]
 }
