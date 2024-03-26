@@ -15,10 +15,12 @@ import {
 } from "../Exports"
 import {
     Link,
+    NavLink,
     createSearchParams,
     useNavigate,
     useSearchParams
 } from "react-router-dom";
+import { useAuth } from "../Context/AuthProvider";
 
 
 function Header() {
@@ -26,6 +28,7 @@ function Header() {
     const [destination, setDestination] = useState(searchParams.get("destination") || "")
     const [isOpen, setIsOpen] = useState(false)
     const [openDate, setOpenDate] = useState(false)
+    const { isAuthenticated, user, logout } = useAuth()
     const navigate = useNavigate()
     const [options, setOptions] = useState({
         adult: 1,
@@ -61,13 +64,18 @@ function Header() {
         })
     }
 
+    const logoutHandler = () => {
+        logout()
+        navigate("/")
+    }
+
     return (
         <>
             <section class="border rounded-lg w-[95%] max-w-7xl mx-auto my-5 px-2 py-3 shadow-md relative">
                 <div class="flex flex-nowrap w-full overflow-x-auto gap-2 lg:gap-10 items-center lg:justify-center">
-                    <Link to="/bookmarks">
+                    <NavLink to="/bookmarks">
                         bookmarks
-                    </Link>
+                    </NavLink>
                     <div class="flex">
                         <Location class="w-5 aspect-square fill-red-700" />
                         <input
@@ -107,9 +115,15 @@ function Header() {
                             <Search class="w-5 aspect-square fill-white" />
                         </button>
                     </div>
-                    <Link to="/login">
-                        login
-                    </Link>
+                    {isAuthenticated ?
+                        <div class="flex gap-4">
+                            <span>{user.user}</span>
+                            <button onClick={logoutHandler}>logout</button>
+                        </div> :
+                        <NavLink to="/login">
+                            login
+                        </NavLink>
+                    }
                 </div>
                 <OptionItems
                     handlerOptions={handlerOptions}

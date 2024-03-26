@@ -1,13 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useAuth } from "../Context/AuthProvider"
 
 function Login() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("ghazale@gmail.com")
+    const [password, setPassword] = useState("123456")
+    const { user, login, isAuthenticated } = useAuth()
+    const navigate = useNavigate()
     const submitHandler = (e) => {
         e.preventDefault()
-        setEmail("")
-        setPassword("")
+        if (email && password) login(email, password)
     }
+    console.log(user)
+    useEffect(() => {
+        if (isAuthenticated) navigate("/", { replace: true })
+    }, [isAuthenticated, navigate])
     return (
         <>
             <form
@@ -18,14 +25,14 @@ function Login() {
                     type="text"
                     value={email}
                     placeholder="email"
-                    class="p-2 rounded-lg outline-none placeholder:text-gray-700 border"
+                    class="p-2 rounded-lg outline-none placeholder:text-gray-500 border"
                     onChange={(e) => { setEmail(e.target.value) }}
                 />
                 <input
                     type="password"
                     value={password}
                     placeholder="password"
-                    class="p-2 rounded-lg outline-none placeholder:text-gray-700 border"
+                    class="p-2 rounded-lg outline-none placeholder:text-gray-500 border"
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
                 <button
