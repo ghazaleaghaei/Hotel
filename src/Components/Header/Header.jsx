@@ -72,7 +72,7 @@ function Header() {
     return (
         <>
             <section class="border rounded-lg w-[95%] max-w-7xl mx-auto my-5 px-2 py-3 shadow-md relative">
-                <div class="flex flex-nowrap w-full overflow-x-auto gap-2 lg:gap-10 items-center lg:justify-center">
+                <div class="flex flex-nowrap w-full overflow-x-auto gap-2 lg:gap-8 items-center lg:justify-center">
                     <NavLink to="/bookmarks">
                         bookmarks
                     </NavLink>
@@ -117,7 +117,7 @@ function Header() {
                     </div>
                     {isAuthenticated ?
                         <div class="flex gap-4">
-                            <span>{user.user}</span>
+                            <span>{user.name}</span>
                             <button onClick={logoutHandler}>logout</button>
                         </div> :
                         <NavLink to="/login">

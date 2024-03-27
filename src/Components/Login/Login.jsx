@@ -11,7 +11,6 @@ function Login() {
         e.preventDefault()
         if (email && password) login(email, password)
     }
-    console.log(user)
     useEffect(() => {
         if (isAuthenticated) navigate("/", { replace: true })
     }, [isAuthenticated, navigate])

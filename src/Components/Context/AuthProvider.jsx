@@ -5,11 +5,18 @@ const initialState = {
     user: null,
     isAuthenticated: false
 }
-const fakeUser = {
-    user: "ghazale",
-    email: "ghazale@gmail.com",
-    password: "123456"
-}
+const fakeUser = [
+    {
+        name: "ghazale",
+        email: "ghazale@gmail.com",
+        password: "123456"
+    },
+    {
+        name: "ghazal",
+        email: "ghazal@gmail.com",
+        password: "1234"
+    }
+]
 
 function authReducer(state, action) {
     switch (action.type) {
@@ -28,9 +35,7 @@ function authReducer(state, action) {
 export default function AuthProvider({ children }) {
     const [{ user, isAuthenticated }, dispatch] = useReducer(authReducer, initialState)
     function login(email, password) {
-        console.log(email, password)
-        if (email === fakeUser.email && password === fakeUser.password)
-            dispatch({ type: "login", payload: fakeUser })
+        fakeUser.map((item, index) => item.email === email && item.password === password ? dispatch({ type: "login", payload: fakeUser[index] }) : "")
     }
     function logout() {
         dispatch({ type: "logout" })

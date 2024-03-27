@@ -14,6 +14,7 @@ import BookMarkList from "./BookMarkList/BookMarkList"
 import CurrentBookMark from "./CurrentBookMark/currentBookMark"
 import AddNewBookMark from "./AddNewBookMark/AddNewBookMark"
 import Login from "./Login/Login"
+import ProtectedRouted from "./ProtectedRoutes/ProtectedRoutes"
 
 export { Header }
 export { OptionItem }
@@ -31,3 +32,4 @@ export { BookMarkList }
 export { CurrentBookMark }
 export { AddNewBookMark }
 export { Login }
+export { ProtectedRouted }

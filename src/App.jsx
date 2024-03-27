@@ -14,6 +14,7 @@ import {
     CurrentBookMark,
     AddNewBookMark,
     Login,
+    ProtectedRouted,
 } from "./Components/Exports"
 import HotelsProvider from "./Components/Context/HotelsProvider"
 import BookMarkProvider from "./Components/Context/BookMarkProvider"
@@ -33,7 +34,9 @@ function App() {
                                 <Route index element={<Hotels />} />
                                 <Route path=":id" element={<Hotel />} />
                             </Route>
-                            <Route path="/bookmarks" element={<BookMarkLayout />}>
+                            <Route path="/bookmarks" element={<ProtectedRouted>
+                                <BookMarkLayout />
+                            </ProtectedRouted>}>
                                 <Route index element={<BookMarkList />} />
                                 <Route path=":id" element={<CurrentBookMark />} />
                                 <Route path="add" element={<AddNewBookMark />} />
