@@ -22,6 +22,7 @@ function Hotel() {
                     alt={currentHotel?.name}
                     class="w-full aspect-[3/2] object-cover rounded-lg my-4"
                 />
+                <p class="text-blue-950 font-base leading-loose">{currentHotel?.summary}</p>
             </div>
         </div>
     )

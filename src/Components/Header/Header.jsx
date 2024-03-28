@@ -7,6 +7,8 @@ import {
     Location,
     Calender,
     Search,
+    Logout,
+    LoginIcon
 } from "../../Svg/Exports"
 import {
     BookMarkList,
@@ -118,10 +120,13 @@ function Header() {
                     {isAuthenticated ?
                         <div class="flex gap-4">
                             <span>{user.name}</span>
-                            <button onClick={logoutHandler}>logout</button>
+                            <button onClick={logoutHandler}>
+                                <Logout class="w-5 aspect-square fill-red-700" />
+                            </button>
                         </div> :
                         <NavLink to="/login">
-                            login
+                            <LoginIcon class="w-5 aspect-square fill-red-700" />
+                            <span class="text-red-700">login</span>
                         </NavLink>
                     }
                 </div>

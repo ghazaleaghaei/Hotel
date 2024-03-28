@@ -1377,6 +1377,15 @@
       "longitude": "139.66466903511903",
       "host_location": "TokyoJapan",
       "id": 10
+    },
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "countryCode": "DE",
+      "latitude": "52.52990328974903",
+      "longitude": "13.40280532836914",
+      "host_location": "BerlinGermany",
+      "id": 11
     }
   ]
 }
